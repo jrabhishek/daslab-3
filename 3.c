@@ -13,7 +13,7 @@ struct node *tail = NULL;
 void insertAtFirst(int item)
 {
 	struct node *new = (struct node*)malloc(sizeof(struct node));
-	new ->data = item;
+
 	new->data = item;
 	new->next = NULL;
 	new->prev = NULL;
@@ -27,6 +27,27 @@ void insertAtFirst(int item)
 	new->next = head;
 	head->prev = new;
 	head = new;
+}
+ int count()
+{
+	int length = 0;
+
+	if (head == NULL)
+	{
+		return -1 ;
+		
+	}
+
+	struct node *temp = head;
+	while(temp != NULL)
+	{
+
+		temp = temp->next;
+		length++;
+
+	}
+	return length;
+
 }
 void deletefirst()
 {
@@ -65,7 +86,7 @@ void display()
 
 void reversedisplay()
 {
-	if(head!=NULL)
+	if(head==NULL)
 	{
 		return;
 	}
@@ -130,35 +151,15 @@ void search( int item)
 
 }
 
-int count()
-{
-	int length = 0;
 
-	if (head == NULL)
-	{
-		return;
-		/* code */
-	}
-
-	struct node *temp = head;
-	while(temp != NULL)
-	{
-
-		temp = temp->next;
-		length++;
-
-	}
-	return length;
-
-}
 
 void main()
 {
-	int c,data,s = 1;
+	int data,c = 1;
 	
-	while(s == 1)
+	while(c !=-1)
 	{
-		printf("enter:\n 1 to insert\n 2 to delete at first\n 3 to delete at last\n 4 to search an element\n 5 t0 find length of list\n6 to delete element with given keyn");
+		printf("enter:\n 1 to insert\n 2 to delete at first\n 3 to delete at last\n 4 to search an element\n 5 t0 find length of list\n6 to delete element with given keyn\n7 to display\n8 to reversedisplay");
 
 	scanf("%d",&c);
 
@@ -166,7 +167,7 @@ void main()
 	{
 		case 1:
 		     printf("enter data\n");
-		     scanf("%d",data);
+		     scanf("%d",&data);
 			 insertAtFirst(data);
 			break;
 		case 2:
@@ -188,12 +189,17 @@ void main()
 		     scanf("%d",data);
 			 insertAtFirst(data);
 			 break;
+		case 7:
+			display();
+			break;
+		case 8:
+			reversedisplay();
+			break;
 		default:
 			printf("fuck off\n");
 
 }
-printf("enter the 1 to continue\n");
-		scanf("%d",&s);
+
 }
 }
 
